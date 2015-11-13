@@ -4,7 +4,10 @@
   <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
-  <title></title>
+  <link rel="stylesheet" href="nav/responsive-nav.css">
+  <script src="nav/responsive-nav.min.js"></script>
+  <title>webpage</title>
+  
 </head>
 <body>
 <div class="container">
@@ -12,18 +15,18 @@
 	<ol>
 		<li><a href="#">home</a></li>
 	</ol>
-	<ul>
-		<li>menu
-			<ul>
+	<div class="right">
+	<ul class="nav-collapse">
+		
 				<li><a href="#">sub-menu</a></li>
 				<li><a href="#">sub-menu</a></li>
 				<li><a href="#">sub-menu</a></li>
 				<li><a href="#">sub-menu</a></li>
 				<li><a href="#">sub-menu</a></li>
 				<li><a href="#">sub-menu</a></li>
-			</ul>
-		</li>
+			
 	</ul>
+	</div>
 </nav>
 <nav class="hidden-xs">
 	<ul>
@@ -51,7 +54,6 @@
 </div>
 <div class="container" id="main">
 	<div class="row">
-		<div class="col-md-2">menu</div>
 		<div class="col-md-4">
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam velit id commodo dignissim. Suspendisse porttitor ex ut faucibus interdum. Phasellus augue ipsum, convallis sed mauris non, cursus tristique lacus. Sed congue massa a finibus bibendum. Vestibulum sem nisi, egestas et ullamcorper quis, mattis quis mauris. Nulla facilisi. Nulla justo lorem, euismod vitae lacinia quis, efficitur ac sapien.</p>
 
@@ -65,5 +67,8 @@
 		</div>
 	</div>
 </div>
+<script>
+	var nav = responsiveNav(".nav-collapse");
+  </script>
 </body>
 </html>

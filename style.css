@@ -94,35 +94,32 @@ nav li:hover > ul {
 }
 }
 @media (max-width: 768px){
-	nav {
-		font: 1.2em Arial;
-		z-index: 5;
-		text-align: center;
-	}
-	nav ul, nav ol {
-		list-style: none;
-		padding: 0;
-		margin: 0;	 
-	}
-	nav li {
-		padding: 10px;
-		z-index: 5;
-	}
-	nav ol {
-		float: left;
-	}
-
-	nav > ul {
-		float: right;
-	}
-	nav ul ul {
-		display: none;
-	}
-	nav li:hover ul {
-		display: block;
-	}
+  nav {
+  	background-color: #ff00ff;
+  	width: 100%;
+  }
+  nav ol, nav ul {
+  	list-style: none;
+  	padding: 0;
+  	margin: 0;
+  }
+  nav ol {
+  	float: left;
+  	padding: 0.5em;
+  }
+  nav div {
+  	text-align: right;
+  	padding: 0.5em;
+  }
+  nav ul li {
+  	padding: 0.1em;
+  }
+  
 }
 #main {
 	background: #ab41cc;
 	clear: both;
+}
+.right {
+	float: right;
 }
