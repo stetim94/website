@@ -7,12 +7,14 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
   turn='player';
 });
+game_progress = "";
 turntime = 1;
 mode = 0;
 corner = ["one", "three", "seven", "nine"];
 field = ["one","two","three","four","five","six","seven","eight","nine"];
 pick = Math.floor(Math.random() * (3 - 0 + 1)) + 0;
 function myFunction() {
+
 	turn = "computer";
 	val1 = document.getElementById("one").value;
     val2 = document.getElementById("two").value;
@@ -24,7 +26,14 @@ function myFunction() {
     val8 = document.getElementById("eight").value;
     val9 = document.getElementById("nine").value;
     winner(); /* call winner function to see if user has won */
+    if (game_progress == "done"){
+    	document.getElementById('reset').innerHTML = "<input type='button' value='reset?' onclick='reset()' style='width: auto; height: auto;'>";
+    	turn = 'computer';
+    	return;
+    }
+    
     done = 0;
+
     if (turntime == 1){
     	if(val5 == ""){
     		document.getElementById("five").value="O"; done = 1;
@@ -38,12 +47,14 @@ function myFunction() {
     } 
     /* computer trying to make the winning move */
     /* if computer is in the middle, try to make row over the middle */
+
     if (val5 == "O"){
     	if (val1 == "O" && val9 == ""){
     		document.getElementById("nine").value="O"; done = 1; val9 = "O"
     	}
     	else if (val2 == "O" && val8 == ""){
     		document.getElementById("eight").value="O"; done = 1; val8 = "O"
+
     	}
     	else if (val3 == "O" && val7 == ""){
     		document.getElementById("seven").value="O"; done = 1; val7 = "O"
@@ -123,67 +134,67 @@ function myFunction() {
     	}
     }
     /* defensive moves */
-    if (mode == 1 && done == 0){
-    	if (val1 == "X"){
-    		if(val2 == "X" && val3==""){
+    if (done == 0){
+    	if (val1 == "X" && done==0){
+    		if(val2 == "X" && val3=="" && done==0){
     			document.getElementById("three").value="O"; done = 1; val3 = "O"
     		}
-    		else if(val3 == "X" && val2==""){
+    		 if(val3 == "X" && val2=="" && done==0){
     			document.getElementById("two").value="O"; done = 1; val2 = "O"
     		}
-    		else if(val4 == "X" && val7 == ""){
+    		 if(val4 == "X" && val7 == "" && done==0){
     			document.getElementById("seven").value="O"; done = 1; val7 = "O"
     		}
-    		else if (val7 == "X" && val4 ==""){
+    		 if (val7 == "X" && val4 =="" && done==0){
     			document.getElementById("four").value="O"; done = 1; val4 = "O"
     		}
     	}
-    	else if (val3 == "X"){
-    		if(val2 == "X" && val1==""){
+    	 if (val3 == "X" && done==0){
+    		if(val2 == "X" && val1=="" && done==0){
     			document.getElementById("one").value="O"; done = 1; val1 = "O"
     		}
-    		else if(val1 == "X" && val2==""){
+    		 if(val1 == "X" && val2=="" && done==0){
     			document.getElementById("two").value="O"; done = 1; val2 = "O"
     		}
-    		else if(val6 == "X" && val9 == ""){
+    		 if(val6 == "X" && val9 == "" && done==0){
     			document.getElementById("nine").value="O"; done = 1; val9 = "O"
     		}
-    		else if (val9 == "X" && val6 ==""){
+    		 if (val9 == "X" && val6 =="" && done==0){
     			document.getElementById("six").value="O"; done = 1; val6 = "O"
     		}
     	}
-    	else if (val7 == "X"){
-    		if(val8 == "X" && val9==""){
+    	 if (val7 == "X" && done==0){
+    		if(val8 == "X" && val9=="" && done==0){
     			document.getElementById("nine").value="O"; done = 1; val9 = "O"
     		}
-    		else if(val9 == "X" && val8==""){
+    		 if(val9 == "X" && val8=="" && done==0){
     			document.getElementById("eight").value="O"; done = 1; val8 = "O"
     		}
-    		else if(val4 == "X" && val1 == ""){
+    		 if(val4 == "X" && val1 == "" && done==0){
     			document.getElementById("one").value="O"; done = 1; val1 = "O"
     		}
-    		else if (val1 == "X" && val4 ==""){
+    		 if (val1 == "X" && val4 =="" && done==0){
     			document.getElementById("four").value="O"; done = 1; val4 = "O"
     		}
     	}
     	
-    	else if (val9 == "X"){
-    		if(val8 == "X" && val7==""){
+    	 if (val9 == "X"  && done==0){
+    		if(val8 == "X" && val7=="" && done==0){
     			document.getElementById("seven").value="O"; done = 1; val7 = "O"
     		}
-    		else if(val7 == "X" && val8==""){
+    		 if(val7 == "X" && val8=="" && done==0){
     			document.getElementById("eight").value="O"; done = 1; val8 = "O"
     		}
-    		else if(val6 == "X" && val3 == ""){
+    		 if(val6 == "X" && val3 == "" && done==0){
     			document.getElementById("three").value="O"; done = 1; val3 = "O"
     		}
-    		else if (val3 == "X" && val6 ==""){
+    		 if (val3 == "X" && val6 =="" && done==0){
     			document.getElementById("six").value="O"; done = 1; val6 = "O"
     		}
     	}
     } 
 
-    else if (mode == 2 && done == 0){
+    if (done == 0){
     	/* defensive moves if human has middle */
     	if (val1 == "X" && val9 == ""){
     		document.getElementById("nine").value="O"; done = 1; val9 = "O"
@@ -300,7 +311,7 @@ function myFunction() {
     		for (i = 0; i< arrayLength; i++){
     			store = document.getElementById(field[i]);
     			if (store.value == ""){			
-    				store.value = "0";
+    				store.value = "O";
 				break;
     			}
     		}
@@ -309,6 +320,11 @@ function myFunction() {
     }
 	
     winner(); /* call winner fucntion to see if computer has won */
+    if (game_progress == "done"){
+    	document.getElementById('reset').innerHTML = "<input type='button' value='reset?' onclick='reset()' style='width: auto; height: auto;'>";
+    	turn = 'computer';
+    	return;
+    }
     turn = 'player';
 
 
@@ -400,6 +416,11 @@ function reset(){
 	document.getElementById("seven").value = '';
 	document.getElementById("eight").value = '';
 	document.getElementById("nine").value = '';
+	turntime = 1; done = 0; 
+	document.getElementById('reset').innerHTML = "";
+	document.getElementById('demo').innerHTML = "";
+	turn = 'player';
+	game_progress = "";
 }
 </script>
 <style>
@@ -433,6 +454,7 @@ p {
 <input value="" type="button" id="nine" onclick="val9 = document.getElementById('nine');if(val9.value == '' &amp;&amp; turn == 'player'){val9.value='X';myFunction()}"></input>
 </div>
 <p id="demo"></p>
-<input type="button" value="reset" onclick="reset()" style="width: auto; height: auto;">
+<p id="reset"></p>
+
 </body>
 </html>
