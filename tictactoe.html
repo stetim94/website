@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>tic tac toe</title>
+<meta charset="utf-8">
+<script>
+document.addEventListener("DOMContentLoaded", function(event) { 
+  turn='player';
+});
+turntime = 1;
+mode = 0;
+corner = ["one", "three", "seven", "nine"];
+field = ["one","two","three","four","five","six","seven","eight","nine"];
+pick = Math.floor(Math.random() * (3 - 0 + 1)) + 0;
+function myFunction() {
+	turn = "computer";
+	val1 = document.getElementById("one").value;
+    val2 = document.getElementById("two").value;
+    val3 = document.getElementById("three").value;
+    val4 = document.getElementById("four").value;
+    val5 = document.getElementById("five").value;
+    val6 = document.getElementById("six").value;
+    val7 = document.getElementById("seven").value;
+    val8 = document.getElementById("eight").value;
+    val9 = document.getElementById("nine").value;
+    winner(); /* call winner function to see if user has won */
+    done = 0;
+    if (turntime == 1){
+    	if(val5 == ""){
+    		document.getElementById("five").value="O"; done = 1;
+
+    	mode = 1;
+    	} else {
+    		document.getElementById(corner[pick]).value="O"; done = 1;
+    		mode = 2;
+    	}
+    turntime += 1;
+    } 
+    /* computer trying to make the winning move */
+    /* if computer is in the middle, try to make row over the middle */
+    if (val5 == "O"){
+    	if (val1 == "O" && val9 == ""){
+    		document.getElementById("nine").value="O"; done = 1; val9 = "O"
+    	}
+    	else if (val2 == "O" && val8 == ""){
+    		document.getElementById("eight").value="O"; done = 1; val8 = "O"
+    	}
+    	else if (val3 == "O" && val7 == ""){
+    		document.getElementById("seven").value="O"; done = 1; val7 = "O"
+    	} 
+    	else if (val4 == "O" && val6 == ""){
+    		document.getElementById("six").value="O"; done = 1; val6 = "O"
+    	} 
+    	else if (val6 == "O" && val4 == ""){ 
+    		document.getElementById("four").value="O"; done = 1; val4 = "O"
+    	}
+    	else if (val7 == "O" && val3 == ""){
+    		document.getElementById("three").value="O"; done = 1; val3 = "O"
+    	}
+    	else if (val8 == "O" && val2 == ""){
+    		document.getElementById("two").value="O"; done = 1; val2 = "O"
+    	}
+    	else if (val9 == "O" && val1 == ""){
+    		document.getElementById("one").value="O"; done = 1; val1 = "O"
+    	}
+    } else {
+    	/* computer does not have the middle, try to complete a row anywhere */
+   		if (val1 == "O"){
+    		if(val2 == "O" && val3==""){
+    			document.getElementById("three").value="O"; done = 1; val3 = "O"
+    		}
+    		else if(val3 == "O" && val2==""){
+    			document.getElementById("two").value="O"; done = 1; val2 = "O"
+    		}
+    		else if(val4 == "O" && val7 == ""){
+    			document.getElementById("seven").value="O"; done = 1; val7 = "O"
+    		}
+    		else if (val7 == "O" && val4 ==""){
+    			document.getElementById("four").value="O"; done = 1; val4 = "O"
+    		}
+    	}
+    	else if (val3 == "O"){
+    		if(val2 == "O" && val1==""){
+    			document.getElementById("one").value="O"; done = 1; val1 = "O"
+    		}
+    		else if(val1 == "O" && val2==""){
+    			document.getElementById("two").value="O"; done = 1; val2 = "O"
+    		}
+    		else if(val6 == "O" && val9 == ""){
+    			document.getElementById("nine").value="O"; done = 1; val9 = "O"
+    		}
+    		else if (val9 == "O" && val6 ==""){
+    			document.getElementById("six").value="O"; done = 1; val6 = "O"
+    		}
+    	}
+    	else if (val7 == "O"){
+    		if(val8 == "O" && val9==""){
+    			document.getElementById("nine").value="O"; done = 1; val9 = "O"
+    		}
+    		else if(val9 == "O" && val8==""){
+    			document.getElementById("eight").value="O"; done = 1; val8 = "O"
+    		}
+    		else if(val4 == "O" && val1 == ""){
+    			document.getElementById("one").value="O"; done = 1; val1 = "O"
+    		}
+    		else if (val1 == "O" && val4 ==""){
+    			document.getElementById("four").value="O"; done = 1; val4 = "O"
+    		}
+    	}
+    	else if (val9 == "O"){
+    		if(val8 == "O" && val7==""){
+    			document.getElementById("seven").value="O"; done = 1; val7 = "O"
+    		}
+    		else if(val7 == "O" && val8==""){
+    			document.getElementById("eight").value="O"; done = 1; val8 = "O"
+    		}
+    		else if(val6 == "O" && val3 == ""){
+    			document.getElementById("three").value="O"; done = 1; val3 = "O"
+    		}
+    		else if (val3 == "O" && val6 ==""){
+    			document.getElementById("six").value="O"; done = 1; val6 = "O"
+    		}
+    	}
+    }
+    /* defensive moves */
+    if (mode == 1 && done == 0){
+    	if (val1 == "X"){
+    		if(val2 == "X" && val3==""){
+    			document.getElementById("three").value="O"; done = 1; val3 = "O"
+    		}
+    		else if(val3 == "X" && val2==""){
+    			document.getElementById("two").value="O"; done = 1; val2 = "O"
+    		}
+    		else if(val4 == "X" && val7 == ""){
+    			document.getElementById("seven").value="O"; done = 1; val7 = "O"
+    		}
+    		else if (val7 == "X" && val4 ==""){
+    			document.getElementById("four").value="O"; done = 1; val4 = "O"
+    		}
+    	}
+    	else if (val3 == "X"){
+    		if(val2 == "X" && val1==""){
+    			document.getElementById("one").value="O"; done = 1; val1 = "O"
+    		}
+    		else if(val1 == "X" && val2==""){
+    			document.getElementById("two").value="O"; done = 1; val2 = "O"
+    		}
+    		else if(val6 == "X" && val9 == ""){
+    			document.getElementById("nine").value="O"; done = 1; val9 = "O"
+    		}
+    		else if (val9 == "X" && val6 ==""){
+    			document.getElementById("six").value="O"; done = 1; val6 = "O"
+    		}
+    	}
+    	else if (val7 == "X"){
+    		if(val8 == "X" && val9==""){
+    			document.getElementById("nine").value="O"; done = 1; val9 = "O"
+    		}
+    		else if(val9 == "X" && val8==""){
+    			document.getElementById("eight").value="O"; done = 1; val8 = "O"
+    		}
+    		else if(val4 == "X" && val1 == ""){
+    			document.getElementById("one").value="O"; done = 1; val1 = "O"
+    		}
+    		else if (val1 == "X" && val4 ==""){
+    			document.getElementById("four").value="O"; done = 1; val4 = "O"
+    		}
+    	}
+    	
+    	else if (val9 == "X"){
+    		if(val8 == "X" && val7==""){
+    			document.getElementById("seven").value="O"; done = 1; val7 = "O"
+    		}
+    		else if(val7 == "X" && val8==""){
+    			document.getElementById("eight").value="O"; done = 1; val8 = "O"
+    		}
+    		else if(val6 == "X" && val3 == ""){
+    			document.getElementById("three").value="O"; done = 1; val3 = "O"
+    		}
+    		else if (val3 == "X" && val6 ==""){
+    			document.getElementById("six").value="O"; done = 1; val6 = "O"
+    		}
+    	}
+    } 
+
+    else if (mode == 2 && done == 0){
+    	/* defensive moves if human has middle */
+    	if (val1 == "X" && val9 == ""){
+    		document.getElementById("nine").value="O"; done = 1; val9 = "O"
+    	}
+    	else if (val2 == "X" && val8 == ""){
+    		document.getElementById("eight").value="O"; done = 1; val8 = "O"
+    	}
+    	else if (val3 == "X" && val7 == ""){
+    		document.getElementById("seven").value="O"; done = 1; val7 = "O"
+    	} 
+    	else if (val4 == "X" && val6 == ""){
+    		document.getElementById("six").value="O"; done = 1; val6 = "O"
+    	} 
+    	else if (val5 == "X" && val5 == ""){
+    		document.getElementById("five").value="O"; done = 1; val5 = "O"
+    	}
+    	else if (val6 == "X" && val4 == ""){ 
+    		document.getElementById("four").value="O"; done = 1; val4 = "O"
+    	}
+    	else if (val7 == "X" && val3 == ""){
+    		document.getElementById("three").value="O"; done = 1; val3 = "O"
+    	}
+    	else if (val8 == "X" && val2 == ""){
+    		document.getElementById("two").value="O"; done = 1; val2 = "O"
+    	}
+    	else if (val9 == "X" && val1 == ""){
+    		document.getElementById("one").value="O"; done = 1; val1 = "O"
+    	}
+
+    }
+    /* comuter tries to win, but can't make a winning move, and does not have to make defensive moves */
+    if (done == 0){
+    	if (val1 == "O"){
+    		if(val2 == "" && val3==""){
+    			document.getElementById("two").value="O"; done = 1; val2 = "O"
+    		}
+    		else if(val4 == "" && val7 == ""){
+    			document.getElementById("four").value="O"; done = 1; val4 = "O"
+    		}
+    	}
+    	else if (val3 == "O"){
+    		if(val2 == "" && val1==""){
+    			document.getElementById("two").value="O"; done = 1; val2 = "O"
+    		}
+    		
+    		else if(val6 == "" && val9 == ""){
+    			document.getElementById("six").value="O"; done = 1; val6 = "O"
+    		}
+    		
+    	}
+    	else if (val7 == "O"){
+    		if(val8 == "" && val9==""){
+    			document.getElementById("eight").value="O"; done = 1; val8 = "O"
+    		}
+    		
+    		else if(val4 == "" && val1 == ""){
+    			document.getElementById("four").value="O"; done = 1; val4 = "O"
+    		}
+    		
+    	}
+    	else if (val9 == "O"){
+    		if(val8 == "" && val7==""){
+    			document.getElementById("eight").value="O"; done = 1; val8 = "O"
+    		}
+    		
+    		else if(val6 == "" && val3 == ""){
+    			document.getElementById("six").value="O"; done = 1; val6 = "O"
+    		}
+    		
+    	}
+    	else if (val2 == "O"){
+    		if (val1 == "" && val3 == ""){
+    			if(Math.random() < 0.5){
+    				document.getElementById("one").value="O"; done = 1; val1 = "O"
+    			} else {
+    				document.getElementById("three").value="O"; done = 1; val3 = "O"
+    			}
+    		}
+    	}
+    	else if (val6 == "O"){
+    		if (val3 == "" && val9 == ""){
+    			if(Math.random() < 0.5){
+    				document.getElementById("three").value="O"; done = 1; val3 = "O"
+    			} else {
+    				document.getElementById("nine").value="O"; done = 1; val9 = "O"
+    			}
+    		}
+    	}
+    	else if (val8 == "O"){
+    		if (val7 == "" && val9 == ""){
+    			if(Math.random() < 0.5){
+    				document.getElementById("seven").value="O"; done = 1; val7 = "O"
+    			} else {
+    				document.getElementById("nine").value="O"; done = 1; val9 = "O"
+    			}
+    		}
+    	}
+    	else if (val4 == "O"){
+    		if (val1 == "" && val7 == ""){
+    			if(Math.random() < 0.5){
+    				document.getElementById("one").value="O"; done = 1; val1 = "O"
+    			} else {
+    				document.getElementById("seven").value="O"; done = 1; val7 = "O"
+    			}
+    		}
+    	}
+    }
+    /* go over the shullfe array in case there is no logic move */
+    if (done == 0){
+    	loop = true;
+    	shuffle(field);
+    	do {
+    		arrayLength = field.length;
+    		for (i = 0; i< arrayLength; i++){
+    			store = document.getElementById(field[i]);
+    			if (store.value == ""){			
+    				store.value = "0";
+				break;
+    			}
+    		}
+    		loop = false;
+    	} while (loop == true)
+    }
+	
+    winner(); /* call winner fucntion to see if computer has won */
+    turn = 'player';
+
+
+} /*else from if it is a tie*/
+
+function winner(){
+	if(val1 !== "" && val2 !== "" && val3 !== "" && val4 !== "" && val6 !== "" && val6 !== "" && val7 !== "" && val8 !== "" && val9 !== ""){
+    	document.getElementById("demo").innerHTML = "it is a tie";
+    	game_progress = "done";
+
+    } else {
+    /* check if user has won */
+    if(val1 == "X" && val2 == "X" && val3 == "X"){
+    	document.getElementById("demo").innerHTML = "you won"; game_progress = "done";
+    }
+    if(val4 == "X" && val5 == "X" && val6 == "X"){
+    	document.getElementById("demo").innerHTML = "you won"; game_progress = "done";
+    }
+    if(val7 == "X" && val8 == "X" && val9 == "X"){
+    	document.getElementById("demo").innerHTML = "you won"; game_progress = "done";
+    }
+    if(val1 == "X" && val4 == "X" && val7 == "X"){
+    	document.getElementById("demo").innerHTML = "you won"; game_progress = "done";
+    }
+    if(val2 == "X" && val5 == "X" && val8 == "X"){
+    	document.getElementById("demo").innerHTML = "you won"; game_progress = "done";
+    }
+    if(val3 == "X" && val6 == "X" && val9 == "X"){
+    	document.getElementById("demo").innerHTML = "you won"; game_progress = "done";
+    }
+    if(val1 == "X" && val5 == "X" && val9 == "X"){
+    	document.getElementById("demo").innerHTML = "you won"; game_progress = "done";
+    }
+    if(val3 == "X" && val5 == "X" && val7 == "X"){
+    	document.getElementById("demo").innerHTML = "you won"; game_progress = "done";
+    }
+    /* check if computer has won */
+    if(val1 == "O" && val2 == "O" && val3 == "O"){
+    	document.getElementById("demo").innerHTML = "you lose"; game_progress = "done";
+    }
+    if(val4 == "O" && val5 == "O" && val6 == "O"){
+    	document.getElementById("demo").innerHTML = "you lose"; game_progress = "done";
+    }
+    if(val7 == "O" && val8 == "O" && val9 == "O"){
+    	document.getElementById("demo").innerHTML = "you lose"; game_progress = "done";
+    }
+    if(val1 == "O" && val4 == "O" && val7 == "O"){
+    	document.getElementById("demo").innerHTML = "you lose"; game_progress = "done";
+    }
+    if(val2 == "O" && val5 == "O" && val8 == "O"){
+    	document.getElementById("demo").innerHTML = "you lose"; game_progress = "done";
+    }
+    if(val3 == "O" && val6 == "O" && val9 == "O"){
+    	document.getElementById("demo").innerHTML = "you lose"; game_progress = "done";
+    } 
+    if(val1 == "O" && val5 == "O" && val9 == "O"){
+    	document.getElementById("demo").innerHTML = "you lose"; game_progress = "done";
+    }
+    if(val3 == "O" && val5 == "O" && val7 == "O"){
+    	document.getElementById("demo").innerHTML = "you lose"; game_progress = "done";
+    }
+}
+}
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex ;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+function reset(){
+	document.getElementById("one").value = '';
+	document.getElementById("two").value = '';
+	document.getElementById("three").value = '';
+	document.getElementById("four").value = '';
+	document.getElementById("five").value = '';
+	document.getElementById("six").value = '';
+	document.getElementById("seven").value = '';
+	document.getElementById("eight").value = '';
+	document.getElementById("nine").value = '';
+}
+</script>
+<style>
+input{
+	height: 50px;
+	width: 50px;
+	float: left;
+	margin: 0 10px 10px 0;
+}
+body > div {
+	width: 220px;
+} 
+p {
+	clear: left;
+}
+</style>
+<body>
+<div>
+<input value="" type="button" id="one" onclick="val1 = document.getElementById('one');if(val1.value == '' &amp;&amp; turn == 'player'){val1.value='X';myFunction()}"></input>
+<input value="" type="button" id="two" onclick="val2 = document.getElementById('two');if(val2.value == '' &amp;&amp; turn == 'player'){val2.value='X';myFunction()}"></input>
+<input value="" type="button" id="three" onclick="val3 = document.getElementById('three');if(val3.value == '' &amp;&amp; turn == 'player'){val3.value='X';myFunction()}"></input>
+</div>
+<div>
+<input value="" type="button" id="four" onclick="val4 = document.getElementById('four');if(val4.value == '' &amp;&amp; turn == 'player'){val4.value='X';myFunction()}"></input>
+<input value="" type="button" id="five" onclick="val5 = document.getElementById('five');if(val5.value == '' &amp;&amp; turn == 'player'){val5.value='X';myFunction()}"></input>
+<input value="" type="button" id="six" onclick="val6 = document.getElementById('six');if(val6.value == '' &amp;&amp; turn == 'player'){val6.value='X';myFunction()}"></input>
+</div>
+<div>
+<input value="" type="button" id="seven" onclick="val7 = document.getElementById('seven');if(val7.value == '' &amp;&amp; turn == 'player'){val7.value='X';myFunction()}"></input>
+<input value="" type="button" id="eight" onclick="val8 = document.getElementById('eight');if(val8.value == '' &amp;&amp; turn == 'player'){val8.value='X';myFunction()}"></input>
+<input value="" type="button" id="nine" onclick="val9 = document.getElementById('nine');if(val9.value == '' &amp;&amp; turn == 'player'){val9.value='X';myFunction()}"></input>
+</div>
+<p id="demo"></p>
+<input type="button" value="reset" onclick="reset()" style="width: auto; height: auto;">
+</body>
+</html>
