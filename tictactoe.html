@@ -136,64 +136,64 @@ function myFunction() {
     /* defensive moves */
     if (done == 0){
     	if (val1 == "X" && done==0){
-    		if(val2 == "X" && val3=="" && done==0){
+    		if(val2 == "X" && val3==""){
     			document.getElementById("three").value="O"; done = 1; val3 = "O"
     		}
-    		 if(val3 == "X" && val2=="" && done==0){
+    		 else if(val3 == "X" && val2==""){
     			document.getElementById("two").value="O"; done = 1; val2 = "O"
     		}
-    		 if(val4 == "X" && val7 == "" && done==0){
+    		 else if(val4 == "X" && val7 == ""){
     			document.getElementById("seven").value="O"; done = 1; val7 = "O"
     		}
-    		 if (val7 == "X" && val4 =="" && done==0){
+    		 else if (val7 == "X" && val4 ==""){
     			document.getElementById("four").value="O"; done = 1; val4 = "O"
     		}
     	}
     	 if (val3 == "X" && done==0){
-    		if(val2 == "X" && val1=="" && done==0){
+    		if(val2 == "X" && val1==""){
     			document.getElementById("one").value="O"; done = 1; val1 = "O"
     		}
-    		 if(val1 == "X" && val2=="" && done==0){
+    		 else if(val1 == "X" && val2==""){
     			document.getElementById("two").value="O"; done = 1; val2 = "O"
     		}
-    		 if(val6 == "X" && val9 == "" && done==0){
+    		 else if(val6 == "X" && val9 == ""){
     			document.getElementById("nine").value="O"; done = 1; val9 = "O"
     		}
-    		 if (val9 == "X" && val6 =="" && done==0){
+    		 else if (val9 == "X" && val6 ==""){
     			document.getElementById("six").value="O"; done = 1; val6 = "O"
     		}
     	}
     	 if (val7 == "X" && done==0){
-    		if(val8 == "X" && val9=="" && done==0){
+    		if(val8 == "X" && val9==""){
     			document.getElementById("nine").value="O"; done = 1; val9 = "O"
     		}
-    		 if(val9 == "X" && val8=="" && done==0){
+    		 else if(val9 == "X" && val8==""){
     			document.getElementById("eight").value="O"; done = 1; val8 = "O"
     		}
-    		 if(val4 == "X" && val1 == "" && done==0){
+    		 else if(val4 == "X" && val1 == ""){
     			document.getElementById("one").value="O"; done = 1; val1 = "O"
     		}
-    		 if (val1 == "X" && val4 =="" && done==0){
+    		 else if (val1 == "X" && val4 ==""){
     			document.getElementById("four").value="O"; done = 1; val4 = "O"
     		}
     	}
     	
     	 if (val9 == "X"  && done==0){
-    		if(val8 == "X" && val7=="" && done==0){
+    		if(val8 == "X" && val7==""){
     			document.getElementById("seven").value="O"; done = 1; val7 = "O"
     		}
-    		 if(val7 == "X" && val8=="" && done==0){
+    		 else if(val7 == "X" && val8==""){
     			document.getElementById("eight").value="O"; done = 1; val8 = "O"
     		}
-    		 if(val6 == "X" && val3 == "" && done==0){
+    		 else if(val6 == "X" && val3 == ""){
     			document.getElementById("three").value="O"; done = 1; val3 = "O"
     		}
-    		 if (val3 == "X" && val6 =="" && done==0){
+    		 else if (val3 == "X" && val6 ==""){
     			document.getElementById("six").value="O"; done = 1; val6 = "O"
     		}
     	}
-    } 
 
+	}
     if (done == 0){
     	/* defensive moves if human has middle */
     	if (val1 == "X" && val9 == ""){
@@ -227,6 +227,8 @@ function myFunction() {
     }
     /* comuter tries to win, but can't make a winning move, and does not have to make defensive moves */
     if (done == 0){
+    	/* check corners, if there are two free elements. math.random causes to sometimes take corner, sometimes middle */
+    	if (Math.random() < 0.333){
     	if (val1 == "O"){
     		if(val2 == "" && val3==""){
     			document.getElementById("two").value="O"; done = 1; val2 = "O"
@@ -265,7 +267,49 @@ function myFunction() {
     		}
     		
     	}
-    	else if (val2 == "O"){
+    } else {
+    	if (val1 == "O"){
+    		if(val2 == "" && val3==""){
+    			document.getElementById("three").value="O"; done = 1; val3 = "O"
+    		}
+    		else if(val4 == "" && val7 == ""){
+    			document.getElementById("seven").value="O"; done = 1; val7 = "O"
+    		}
+    	}
+    	else if (val3 == "O"){
+    		if(val2 == "" && val1==""){
+    			document.getElementById("one").value="O"; done = 1; val1 = "O"
+    		}
+    		
+    		else if(val6 == "" && val9 == ""){
+    			document.getElementById("nine").value="O"; done = 1; val9 = "O"
+    		}
+    		
+    	}
+    	else if (val7 == "O"){
+    		if(val8 == "" && val9==""){
+    			document.getElementById("nine").value="O"; done = 1; val8 = "O"
+    		}
+    		
+    		else if(val4 == "" && val1 == ""){
+    			document.getElementById("one").value="O"; done = 1; val1 = "O"
+    		}
+    		
+    	}
+    	else if (val9 == "O"){
+    		if(val8 == "" && val7==""){
+    			document.getElementById("seven").value="O"; done = 1; val7 = "O"
+    		}
+    		
+    		else if(val6 == "" && val3 == ""){
+    			document.getElementById("three").value="O"; done = 1; val3 = "O"
+    		}
+    		
+    	}
+    }
+	}
+    if (done == 0){
+    	if (val2 == "O"){
     		if (val1 == "" && val3 == ""){
     			if(Math.random() < 0.5){
     				document.getElementById("one").value="O"; done = 1; val1 = "O"
@@ -301,7 +345,7 @@ function myFunction() {
     			}
     		}
     	}
-    }
+    } 
     /* go over the shullfe array in case there is no logic move */
     if (done == 0){
     	loop = true;
