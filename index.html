@@ -1,13 +1,12 @@
 <!DOCTYPE html> 
 <html>
 <head>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
-  <link rel="stylesheet" href="nav/responsive-nav.css">
-  <script src="nav/responsive-nav.min.js"></script>
+  <link rel="stylesheet" href="/nav/responsive-nav.css">
+  <script src="/nav/responsive-nav.min.js"></script>
   <title>webpage</title>
-  
 </head>
 <body>
 <div class="container">
@@ -18,12 +17,12 @@
 	<div class="right">
 	<ul class="nav-collapse">
 		
+				<li><a href="/videos/youtube.html">youtube</a></li>
 				<li><a href="#">sub-menu</a></li>
 				<li><a href="#">sub-menu</a></li>
 				<li><a href="#">sub-menu</a></li>
 				<li><a href="#">sub-menu</a></li>
-				<li><a href="#">sub-menu</a></li>
-				<li><a href="#">sub-menu</a></li>
+				<li><a href="#">contact</a></li>
 			
 	</ul>
 	</div>
@@ -33,9 +32,9 @@
 		<li>
 			<a href="#">home</a>
 		</li><li>
-		<a href="#">menu</a>
+		<a href="#">videos</a>
 			<ul>
-				<li><a href="#">sub-menu</a></li>
+				<li><a href="/videos/youtube.html">youtube</a></li>
 				<li><a href="#">sub-menu</a></li>
 			</ul>
 		</li><li><a href="#">menu</a>
@@ -43,10 +42,9 @@
 				<li><a href="#">sub-menu</a></li>
 				<li><a href="#">sub-menu</a></li>
 			</ul>
-		</li><li><a href="#">menu</a>
+		</li><li><a href="#">contact</a>
 			<ul>
-				<li><a href="#">sub-menu</a></li>
-				<li><a href="#">sub-menu</a></li>
+				<li><a href="/contact/contact.html">contact</a></li>
 			</ul>
 		</li>
 	</ul>
@@ -54,7 +52,12 @@
 </div>
 <div class="container" id="main">
 	<div class="row">
-		<div class="col-md-4">
+		<div class="col-md-2 col-sm-1 col-xs-6 right" itemscope itemtype="http://schema.org/openingHours">
+			<time datetime="Mo-Fr 09:00-17:00">Monday till friday: 09:00-17:00</time>
+			<time datetime="Sa 14:00-16:00">satuday: 14:00-16:00</time>
+			<time datetime="closes">sunday: closed</time>
+		</div>
+		<div class="col-md-4 col-sm-5">
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam velit id commodo dignissim. Suspendisse porttitor ex ut faucibus interdum. Phasellus augue ipsum, convallis sed mauris non, cursus tristique lacus. Sed congue massa a finibus bibendum. Vestibulum sem nisi, egestas et ullamcorper quis, mattis quis mauris. Nulla facilisi. Nulla justo lorem, euismod vitae lacinia quis, efficitur ac sapien.</p>
 
 			<p>Pellentesque mi augue, tincidunt ut risus ac, laoreet euismod diam. Cras eget est feugiat, dictum ex a, scelerisque lorem. Nunc elementum justo in auctor venenatis. Sed aliquam in nisl blandit fringilla. Sed vulputate molestie neque vitae molestie. Maecenas consequat libero dolor, convallis finibus massa hendrerit et. Nullam pharetra laoreet lorem. Sed sodales condimentum sapien, sed pretium tellus tempor sed. Aenean vitae massa vel odio efficitur fermentum viverra ac purus. Donec aliquet quam ut consectetur finibus.</p>
@@ -65,7 +68,9 @@
 
 			<p>Integer luctus vestibulum pulvinar. Morbi a elit a tellus iaculis cursus et at libero. Phasellus ac justo at dui laoreet lobortis vitae ac risus. Etiam posuere massa gravida, malesuada mauris et, auctor quam. Donec non accumsan turpis, consectetur facilisis metus. Praesent nisl lectus, tempus eu lacus a, aliquet eleifend tellus. Ut bibendum pretium neque bibendum varius. Sed sed condimentum dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce tortor enim, scelerisque eu egestas a, tincidunt at quam. Nulla at placerat ex. Phasellus lobortis nisi libero, in elementum lectus mollis mollis. Suspendisse potenti. </p>
 		</div>
+		
 	</div>
+	
 </div>
 <script>
 	var nav = responsiveNav(".nav-collapse");
